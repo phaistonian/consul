@@ -14,14 +14,17 @@ The functionality described here is available only in
 ## Create a Partition
 
 This endpoint creates a new Partition and has the following characteristics:
-- [HTTP Method](/api-docs#http-methods): `PUT`
-- [URL Path](/api-docs#version-prefix): `/partition`
-- [Response Type](/api-docs#formatted-json-output): `application/json`
-- [Required ACLs](/docs/security/acl/acl-system): `operator:write`
-- Corresponding CLI command: [`consul partition create`](/commands/partition#create)
-- [Blocking Queries](/api-docs/features/blocking): no
-- [Consistency Modes](/api-docs/features/consistency): none
-- [Agent Caching](/api-docs/features/caching): none
+
+| Characteristic | Value |
+| :------------- | :---- |
+| [HTTP Method](/api-docs#http-methods) | `PUT` |
+| [URL Path](/api-docs#version-prefix) | `/partition` |
+| [Response Type](/api-docs#formatted-json-output) | `application/json` |
+| [Required ACLs](/docs/security/acl/acl-system) | `operator:write` |
+| Corresponding CLI command | [`consul partition create`](/commands/partition#create) |
+| [Blocking Queries](/api-docs/features/blocking) | N/A |
+| [Consistency Modes](/api-docs/features/consistency) | N/A |
+| [Agent Caching](/api-docs/features/caching) | N/A |
 
 ### Parameters
 
@@ -62,15 +65,17 @@ $ curl ---request PUT \
 ## Read a Partition
 
 This endpoint reads a Partition with the given name and has the following characteristics:
-- [HTTP Method](/api-docs#http-methods): `GET`
-- [URL Path](/api-docs#version-prefix): `/partition/:name`
-- [Response Type](/api-docs#formatted-json-output): `application/json`
-- [Required ACLs](/docs/security/acl/acl-system): `operator:read`;
-  however, a non-anonymous token can always read its own partition
-- Corresponding CLI command: [`consul partition read`](/commands/partition#read)
-- [Blocking Queries](/api-docs/features/blocking): no
-- [Consistency Modes](/api-docs/features/consistency): `consistent`
-- [Agent Caching](/api-docs/features/caching): none
+
+| Characteristic | Value |
+| :------------- | :---- |
+| [HTTP Method](/api-docs#http-methods) | `GET` |
+| [URL Path](/api-docs#version-prefix) | `/partition/:name` |
+| [Response Type](/api-docs#formatted-json-output) | `application/json` |
+| [Required ACLs](/docs/security/acl/acl-system) | `operator:read`; however, a non-anonymous token can always read its own partition |
+| Corresponding CLI command | [`consul partition read`](/commands/partition#read) |
+| [Blocking Queries](/api-docs/features/blocking) | no |
+| [Consistency Modes](/api-docs/features/consistency) | `consistent` |
+| [Agent Caching](/api-docs/features/caching) | no |
 
 ### Parameters
 
@@ -98,14 +103,17 @@ $ curl --header "X-Consul-Token: b23b3cad-5ea1-4413-919e-c76884b9ad60" \
 ## Update a Partition
 
 This endpoint updates a Partition description and has the following characteristics:
-- [HTTP Method](/api-docs#http-methods): `PUT`
-- [URL Path](/api-docs#version-prefix): `/partition/:name`
-- [Response Type](/api-docs#formatted-json-output): `application/json`
-- [Required ACLs](/docs/security/acl/acl-system): `operator:write`
-- Corresponding CLI command: [`consul partition write`](/commands/partition#write)
-- [Blocking Queries](/api-docs/features/blocking): no
-- [Consistency Modes](/api-docs/features/consistency): none
-- [Agent Caching](/api-docs/features/caching): none
+
+| Characteristic | Value |
+| :------------- | :---- |
+| [HTTP Method](/api-docs#http-methods) | `PUT` |
+| [URL Path](/api-docs#version-prefix) | `/partition/:name` |
+| [Response Type](/api-docs#formatted-json-output) | `application/json` |
+| [Required ACLs](/docs/security/acl/acl-system) | `operator:write` |
+| Corresponding CLI command | [`consul partition write`](/commands/partition#write) |
+| [Blocking Queries](/api-docs/features/blocking) | N/A |
+| [Consistency Modes](/api-docs/features/consistency) | N/A |
+| [Agent Caching](/api-docs/features/caching) | N/A |
 
 ### Parameters
 
@@ -151,14 +159,17 @@ all associated data has been deleted will the Partition actually disappear.
 Until then, further reads can be performed on the partition and a `DeletedAt`
 field will now be populated with the timestamp of when the Partition was
 marked for deletion. This endpoint has the following characteristics:
-- [HTTP Method](/api-docs#http-methods): `DELETE`
-- [URL Path](/api-docs#version-prefix): `/partition/:name`
-- [Response Type](/api-docs#formatted-json-output): none
-- [Required ACLs](/docs/security/acl/acl-system): `operator:write`
-- Corresponding CLI command: [`consul partition delete`](/commands/partition#delete)
-- [Blocking Queries](/api-docs/features/blocking): no
-- [Consistency Modes](/api-docs/features/consistency): none
-- [Agent Caching](/api-docs/features/caching): none
+
+| Characteristic | Value |
+| :------------- | :---- |
+| [HTTP Method](/api-docs#http-methods) | `DELETE` |
+| [URL Path](/api-docs#version-prefix) | `/partition/:name` |
+| [Response Type](/api-docs#formatted-json-output) | none |
+| [Required ACLs](/docs/security/acl/acl-system) | `operator:write` |
+| Corresponding CLI command | [`consul partition delete`](/commands/partition#delete) |
+| [Blocking Queries](/api-docs/features/blocking) | N/A |
+| [Consistency Modes](/api-docs/features/consistency) | N/A |
+| [Agent Caching](/api-docs/features/caching) | N/A |
 
 ### Parameters
 
@@ -188,14 +199,17 @@ $ curl --request DELETE \
 ## List all Partitions
 
 This endpoint lists all the Partitions and has the following characteristics:
-- [HTTP Method](/api-docs#http-methods): `GET`
-- [URL Path](/api-docs#version-prefix): `/partitions`
-- [Response Type](/api-docs#formatted-json-output): `application/json`
-- [Required ACLs](/docs/security/acl/acl-system): `operator:read`
-- Corresponding CLI command: [`consul partition list`](/commands/partition#list)
-- [Blocking Queries](/api-docs/features/blocking): no
-- [Consistency Modes](/api-docs/features/consistency): `consistent`
-- [Agent Caching](/api-docs/features/caching): none
+
+| Characteristic | Value |
+| :------------- | :---- |
+| [HTTP Method](/api-docs#http-methods) | `GET` |
+| [URL Path](/api-docs#version-prefix) | `/partitions` |
+| [Response Type](/api-docs#formatted-json-output) | `application/json` |
+| [Required ACLs](/docs/security/acl/acl-system) | `operator:read` |
+| Corresponding CLI command | [`consul partition list`](/commands/partition#list) |
+| [Blocking Queries](/api-docs/features/blocking) | no |
+| [Consistency Modes](/api-docs/features/consistency) | `consistent` |
+| [Agent Caching](/api-docs/features/caching) | no |
 
 ### Sample Request
 
