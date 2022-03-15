@@ -39,6 +39,7 @@ import (
 	"github.com/hashicorp/consul/agent/consul/usagemetrics"
 	"github.com/hashicorp/consul/agent/consul/wanfed"
 	agentgrpc "github.com/hashicorp/consul/agent/grpc"
+	"github.com/hashicorp/consul/agent/grpc/dataplane"
 	"github.com/hashicorp/consul/agent/metadata"
 	"github.com/hashicorp/consul/agent/pool"
 	"github.com/hashicorp/consul/agent/router"
@@ -48,6 +49,7 @@ import (
 	"github.com/hashicorp/consul/lib"
 	"github.com/hashicorp/consul/lib/routine"
 	"github.com/hashicorp/consul/logging"
+	"github.com/hashicorp/consul/proto-public/pbdataplane"
 	"github.com/hashicorp/consul/proto/pbsubscribe"
 	"github.com/hashicorp/consul/tlsutil"
 	"github.com/hashicorp/consul/types"
@@ -652,7 +654,12 @@ func newGRPCHandlerFromConfig(deps Deps, config *Config, s *Server) connHandler 
 				&subscribeBackend{srv: s, connPool: deps.GRPCConnPool},
 				deps.Logger.Named("grpc-api.subscription")))
 		}
+
 		s.registerEnterpriseGRPCServices(deps, srv)
+
+		pbdataplane.RegisterDataplaneServiceServer(srv, dataplane.NewServer(
+			&dataplaneBackend{srv: s},
+			deps.Logger.Named("grpc-api.dataplane")))
 	}
 
 	return agentgrpc.NewHandler(deps.Logger, config.RPCAddr, register)
